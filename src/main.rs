@@ -10,7 +10,8 @@ fn main() {
 
     matriz();
     is_weekend(WeekDay::Quinta);
-    colors()
+    colors();
+    optinal_content();
 }
 
 fn matriz() {
@@ -88,4 +89,23 @@ fn colors() {
             } => "CYMK desconhecido",
         }
     )
+}
+
+fn optinal_content() {
+    let file_content = read_file(String::from(""));
+
+    match &file_content {
+        Some(value) => println!("{}", value),
+        None => println!("Arquivo não existe"),
+    };
+
+    println!("{:?}", file_content);
+
+    if let Some(_) = file_content {
+        println!("Agora, tenho certeza de que há um valor!");
+    }
+}
+
+fn read_file(file_path: String) -> Option<String> {
+    Some(String::from("Conteúdo do arquivo"))
 }
