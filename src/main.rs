@@ -13,6 +13,7 @@ fn main() {
     colors();
     optinal_content();
     vectors();
+    banking_account();
 }
 
 fn matriz() {
@@ -127,4 +128,39 @@ fn vectors() {
         println!("Último valor = {}", nota);
         println!("{:?}", notas);
     }
+}
+
+struct AccountOwner {
+    name: String,
+    last_name: String,
+    birthday: String,
+}
+
+struct Account {
+    owner: AccountOwner,
+    balance: f64,
+}
+
+impl Account {
+    fn cashout(&mut self, amount: f64) {
+        self.balance -= amount
+    }
+}
+
+fn banking_account() {
+    let mut account: Account = Account {
+        owner: AccountOwner {
+            name: String::from("Felipe"),
+            last_name: String::from("Heredia"),
+            birthday: String::from("01/05/1986"),
+        },
+        balance: 100.0,
+    };
+
+    account.cashout(25.0);
+
+    println!(
+        "Dados da conta: Titular {} {}, Saldo {}, que nasceu em {}",
+        account.owner.name, account.owner.last_name, account.balance, account.owner.birthday
+    );
 }
