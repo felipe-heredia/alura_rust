@@ -12,6 +12,7 @@ fn main() {
     is_weekend(WeekDay::Quinta);
     colors();
     optinal_content();
+    vectors();
 }
 
 fn matriz() {
@@ -106,6 +107,24 @@ fn optinal_content() {
     }
 }
 
-fn read_file(file_path: String) -> Option<String> {
+fn read_file(_: String) -> Option<String> {
     Some(String::from("Conteúdo do arquivo"))
+}
+
+fn vectors() {
+    let mut notas: Vec<f32> = vec![10.0, 8.8, 6.5, 9.0];
+    println!("{:?}", notas);
+
+    println!(
+        "Nota 6 = {}",
+        match notas.get(7) {
+            Some(n) => *n,
+            None => 0.0,
+        }
+    );
+
+    if let Some(nota) = notas.pop() {
+        println!("Último valor = {}", nota);
+        println!("{:?}", notas);
+    }
 }
